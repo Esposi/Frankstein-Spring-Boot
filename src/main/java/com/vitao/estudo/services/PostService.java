@@ -14,6 +14,12 @@ public class PostService {
     PostRepository postrepository;
 
     public List<Post> getAllPosts(){
+
         return postrepository.findAll();
     }
+
+    public Post addPost(Post post){
+        return postrepository.save(post);
+    }
+
 }

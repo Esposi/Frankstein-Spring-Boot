@@ -3,9 +3,7 @@ package com.vitao.estudo.controllers;
 import com.vitao.estudo.models.Post;
 import com.vitao.estudo.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
 import javax.servlet.http.HttpServletResponse;
@@ -25,6 +23,13 @@ public class PostController
     @GetMapping(value = "/posts")
 
     public List<Post> getAllPostObjetct(){
+
         return postService.getAllPosts();
+    }
+
+    @PostMapping(value = "/addPosts")
+
+    public Post addPost(@RequestBody Post post){
+        return postService.addPost(post);
     }
 }

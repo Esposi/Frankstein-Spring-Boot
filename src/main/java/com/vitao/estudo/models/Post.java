@@ -10,7 +10,7 @@ public class Post {
     private int id;
     private String nome;
     private LocalDateTime data;
-    private Long numeroLong;
+    private Double numeroLong;
     private String array[];
 
     public Post() {
@@ -40,11 +40,11 @@ public class Post {
         this.data = data;
     }
 
-    public Long getNumeroLong() {
+    public Double getNumeroLong() {
         return numeroLong;
     }
 
-    public void setNumeroLong(Long numeroLong) {
+    public void setNumeroLong(Double numeroLong) {
         this.numeroLong = numeroLong;
     }
 
