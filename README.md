@@ -8,7 +8,7 @@ Este projeto simula um ambiente Spring com utilização de Java 11. Se resume, c
 
 Dessa forma, os requisitos para build e run são:
 
-- Java 11;
+- Java 8;
 - SpringBot 2.5.7 para suporte do swagger e mongodb.
 
 
