@@ -49,9 +49,9 @@ public class PostController
         }
     }
 
-    @PutMapping(value = "/updatePost/{id}")
-    public ResponseEntity<Post> update(@PathVariable String id, @RequestBody Post post) throws Exception {
-        Post altPostObjt = postService.updatePost(id, post);
+    @PutMapping(value = "/updatePost/{nome}")
+    public ResponseEntity<Post> update(@PathVariable String nome, @RequestBody Post post) throws Exception {
+        Post altPostObjt = postService.updatePost(nome, post);
         return ResponseEntity.ok().body(altPostObjt);
     }
 

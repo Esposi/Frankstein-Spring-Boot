@@ -30,12 +30,11 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    public Post updatePost(String codigo, Post post) throws Exception {
-        Post altPostObjt = findByCodigo(codigo);
-        altPostObjt.setData(post.getData());
-        altPostObjt.setNome(post.getNome());
-        altPostObjt.setNumeroLong(post.getNumeroLong());
-        altPostObjt.setArray(post.getArray());
-        return postRepository.save(altPostObjt);
+    public Post updatePost(String nome, Post post) throws Exception {
+        List<Post> altPostObjt = findByNome(nome);
+        altPostObjt.get(0).setData(post.getData());
+        altPostObjt.get(0).setNumeroLong(post.getNumeroLong());
+        altPostObjt.get(0).setArray(post.getArray());
+        return postRepository.save(altPostObjt.get(0));
     }
 }
