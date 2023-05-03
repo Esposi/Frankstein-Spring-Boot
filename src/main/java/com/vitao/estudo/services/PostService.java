@@ -15,9 +15,11 @@ public class PostService {
     @Autowired
     PostRepository postRepository;
 
-    public Post findById(Integer id) throws Exception {
-        Optional<Post> altPostObjt = postRepository.findById(id);
-        return altPostObjt.orElseThrow((() -> new NoSuchElementException("Post not found - " + id)));
+    public Post findByCodigo(String codigo) {
+        return this.postRepository.findById(codigo).orElseThrow((() -> new IllegalArgumentException("Post not found, codigo - '" + codigo + "' não existe")));
+    }
+    public List<Post> findByNome(String nome) {
+        return this.postRepository.findByNome(nome);
     }
     public List<Post> getAllPosts(){
 
@@ -28,8 +30,8 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    public Post updatePost(Integer id, Post post) throws Exception {
-        Post altPostObjt = findById(id);
+    public Post updatePost(String codigo, Post post) throws Exception {
+        Post altPostObjt = findByCodigo(codigo);
         altPostObjt.setData(post.getData());
         altPostObjt.setNome(post.getNome());
         altPostObjt.setNumeroLong(post.getNumeroLong());

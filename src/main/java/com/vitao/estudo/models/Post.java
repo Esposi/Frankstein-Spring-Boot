@@ -1,5 +1,6 @@
 package com.vitao.estudo.models;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
@@ -7,7 +8,9 @@ import java.util.Arrays;
 
 @Document(collection = "estudos")
 public class Post {
-    private int id;
+    @Id
+    private String codigo;
+    private Integer id;
     private String nome;
     private LocalDateTime data;
     private Double numeroLong;
@@ -16,10 +19,13 @@ public class Post {
     public Post() {
     }
 
-    public int getId() {
-        return id;
-    }
+    public String getCodigo() { return codigo; }
 
+    public void setCodigo(String codigo) { this.codigo = codigo; }
+
+    public Integer getId() { return id; }
+
+    public void setId(Integer id) { this.id = id; }
     public String getNome() {
         return nome;
     }
@@ -55,6 +61,7 @@ public class Post {
     @Override
     public String toString() {
         return "Post{" +
+                "codigo=" + codigo +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", data=" + data +

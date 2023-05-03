@@ -15,6 +15,7 @@ import java.rmi.ServerException;
 import java.util.List;
 
 @RestController
+@RequestMapping("/post")
 public class PostController
 {
     @Autowired
@@ -30,6 +31,11 @@ public class PostController
         return ResponseEntity.ok().body(postService.getAllPosts());
     }
 
+    @GetMapping(value = "/findByNome")
+    public ResponseEntity<List<Post>> getPostByNome(@RequestParam("nome") String nome){
+        return ResponseEntity.ok().body(postService.findByNome(nome));
+    }
+
     @PostMapping(value = "/addPosts",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -43,8 +49,8 @@ public class PostController
         }
     }
 
-    @PutMapping(value = "/(id)")
-    public ResponseEntity<Post> update(@PathVariable Integer id, @RequestBody Post post) throws Exception {
+    @PutMapping(value = "/updatePost/{id}")
+    public ResponseEntity<Post> update(@PathVariable String id, @RequestBody Post post) throws Exception {
         Post altPostObjt = postService.updatePost(id, post);
         return ResponseEntity.ok().body(altPostObjt);
     }
